@@ -1,4 +1,3 @@
-import userEvent from '@testing-library/user-event';
 import React from 'react';
 import { BrowserRouter as Router,
   Switch,
@@ -8,7 +7,8 @@ import { BrowserRouter as Router,
 import Watchlist from './Watchlist';
 import Auth from './Auth';
 
-export default function Main({ user }) {
+export default function Main({ user,
+  setUser }) {
   return (
     <>
       <main>
@@ -16,13 +16,17 @@ export default function Main({ user }) {
           <Switch>
             <Route to='/'>
               {
-                user
-                  ? <Watchlist />
-                  : <Auth />
+                !user
+                  ? <Auth setUser={setUser} />
+                  : <Watchlist />
               }
             </Route>
             <Route to='/watchlist'>
-
+              {
+                user
+                  ? <Watchlist />
+                  : <Redirect to='/' />
+              }
             </Route>
           </Switch>
         </Router>

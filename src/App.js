@@ -12,11 +12,11 @@ function App() {
     // getUser
     //setUser
   }, []);
-  
+
   return (
     <>
-      <Header />
-      <Main />
+      <Header user={user}
+        setUser={setUser} />
       <Footer />
     </>
   );
