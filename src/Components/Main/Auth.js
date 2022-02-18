@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
-import getUser, { signInUser, signUpUser } from '../../services/fetch-utils';
+import { signInUser, 
+  signUpUser } from '../../services/fetch-utils';
 
 export default function Auth({ setUser }) {
   const [email, setEmail] = useState('');
@@ -11,15 +12,16 @@ export default function Auth({ setUser }) {
   async function handleSubmit(e) {
     e.preventDefault();
     {
-      !newUser
-        ? await signInUser(email, password)
-        : await signUpUser(email, password);
+      if (!newUser) {
+        const user = await signInUser(email, password);
+        setUser(user);
+      } else {
+        const user = await signUpUser(email, password);
+        setUser(user);
+      }
+      setEmail('');
+      setPassword('');
     }
-    const user = await getUser();
-    setUser(user);
-    
-    setEmail('');
-    setPassword('');
   }
 
   return (
