@@ -1,4 +1,6 @@
-import React from 'react';
+import React,
+{ useState,
+  useEffect } from 'react';
 import { BrowserRouter as Router,
   Switch,
   Route,
@@ -10,6 +12,7 @@ import Auth from './Auth';
 
 export default function Main({ user,
   setUser }) {
+    
   return (
     <>
       <main>
