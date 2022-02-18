@@ -26,24 +26,34 @@ export default function Auth({ setUser }) {
     <>
       <form onSubmit={handleSubmit}
         id='auth-form'>
-        <label htmlFor='email'>Email</label>
-        <input onChange={(e) => setEmail(e.target.value)}
-          value={email}
-          type='email'
-          required />
-        <input onChange={(e) => setPassword(e.target.value)}
-          value={password}
-          type='password'
-          minLength='6'
-          required />
-        {
-          !newUser
-            ? <button
-              type='submit'
-              form='auth-form'>SignIn</button>
-            : <button type='submit'
-              form='auth-form'>SignUp</button>
-        }
+        <div>
+          <span onClick={() => setNewUser(false)}
+            className={!newUser && 'active'}>Sign In</span>
+          <span onClick={() => setNewUser(true)}
+            className={newUser && 'active'}>Sign Up</span>
+        </div>
+        <label htmlFor='email'>Email
+          <input onChange={(e) => setEmail(e.target.value)}
+            value={email}
+            name='email'
+            type='email'
+            required />
+        </label>
+        <label htmlFor='password'>Password
+          <input onChange={(e) => setPassword(e.target.value)}
+            value={password}
+            name='password'
+            type='password'
+            minLength='6'
+            required />
+        </label>
+        <button
+          type='submit'
+          form='auth-form'>{
+            !newUser
+              ? 'Sign in'
+              : 'Sign up'
+          }</button>
       </form>
     </>
   );
