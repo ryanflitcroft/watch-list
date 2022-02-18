@@ -17,6 +17,8 @@ function App() {
     <>
       <Header user={user}
         setUser={setUser} />
+      <Main user={user}
+        setUser={setUser} />
       <Footer />
     </>
   );

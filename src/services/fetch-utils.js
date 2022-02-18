@@ -1,7 +1,7 @@
 import { client,
-  checkError } from '../../services/client';
+  checkError } from './client';
 
-export default function getUser() {
+async function getUser() {
 
   return client.auth.session();
 }
@@ -29,3 +29,5 @@ export async function signOutUser() {
   
   return window.location.href = '../';
 }
+
+export default getUser;
