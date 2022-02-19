@@ -6,7 +6,8 @@ import { BrowserRouter as Router,
   Route,
   Redirect,
   NavLink } from 'react-router-dom';
-import { signOutUser } from '../../services/fetch-utils';
+import { signOutUser,
+  getWatchlist } from '../../services/fetch-utils';
 import Watchlist from './Watchlist';
 import Auth from './Auth';
 import SearchPage from './SearchPage';
@@ -14,6 +15,14 @@ import SearchPage from './SearchPage';
 export default function Main({ user,
   setUser }) {
   const [watchlist, setWatchlist] = useState([]);
+
+  useEffect(() => {
+    async function getData() {
+      const data = await getWatchlist();
+      setWatchlist(data);
+    }
+    getData();
+  }, []);
 
   return (
     <>
