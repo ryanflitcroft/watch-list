@@ -10,9 +10,9 @@ export default function SearchPage({ watchlist,
   const [search, setSearch] = useState('');
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
+  // useEffect(() => {
 
-  }, []);
+  // }, []);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -47,8 +47,7 @@ export default function SearchPage({ watchlist,
           searchResults.map((item, i) =>
             <SearchItem key={item.title + i}
               item={item}
-              watchlist={watchlist}
-              setWatchlist={setWatchlist} />
+              watchlist={watchlist} />
           )
         }
       </section>
