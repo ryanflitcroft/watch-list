@@ -1,8 +1,9 @@
 import React from 'react';
-import { addItem, removeItem } from '../../services/fetch-utils';
+import { addItem, getWatchlist, removeItem } from '../../services/fetch-utils';
 
 export default function SearchItem({ item,
-  watchlist }) {
+  watchlist,
+  setWatchlist }) {
   console.log('item', item);
   console.log('watchlist', watchlist);
 
@@ -25,10 +26,14 @@ export default function SearchItem({ item,
     };
 
     await addItem(newItem);
+    const data = await getWatchlist();
+    setWatchlist(data);
   }
 
   async function handleRemoveItem() {
     await removeItem(item.id);
+    const data = await getWatchlist();
+    setWatchlist(data);
   }
 
   return (

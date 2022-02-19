@@ -47,7 +47,8 @@ export default function SearchPage({ watchlist,
           searchResults.map((item, i) =>
             <SearchItem key={item.title + i}
               item={item}
-              watchlist={watchlist} />
+              watchlist={watchlist}
+              setWatchlist={setWatchlist} />
           )
         }
       </section>
