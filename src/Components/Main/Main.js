@@ -5,32 +5,48 @@ import { BrowserRouter as Router,
   Switch,
   Route,
   Redirect,
-  Link } from 'react-router-dom';
+  NavLink } from 'react-router-dom';
 import { signOutUser } from '../../services/fetch-utils';
 import Watchlist from './Watchlist';
 import Auth from './Auth';
+import SearchPage from './SearchPage';
 
 export default function Main({ user,
   setUser }) {
-    
+  const [watchlist, setWatchlist] = useState([]);
+
   return (
     <>
       <main>
         <button onClick={signOutUser}
           type='button'>Sign Out</button>
         <Router>
+          <NavLink to='/watchlist'>
+            Your watchlist
+          </NavLink>
+          <NavLink to='/search'>
+            Search Movies
+          </NavLink>
           <Switch>
-            <Route to='/'>
+            <Route exact path='/'>
               {
                 !user
                   ? <Auth setUser={setUser} />
-                  : <Watchlist />
+                  : <Watchlist watchlist={watchlist} />
               }
             </Route>
-            <Route to='/watchlist'>
+            <Route exact path='/watchlist'>
               {
                 user
-                  ? <Watchlist />
+                  ? <Watchlist watchlist={watchlist} />
+                  : <Redirect to='/' />
+              }
+            </Route>
+            <Route exact path='/search'>
+              {
+                user
+                  ? <SearchPage watchlist={watchlist}
+                    setWatchlist={setWatchlist} />
                   : <Redirect to='/' />
               }
             </Route>

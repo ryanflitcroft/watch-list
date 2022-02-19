@@ -30,4 +30,21 @@ export async function signOutUser() {
   return window.location.href = '../';
 }
 
+export async function addItem(item) {
+  const response = await client
+    .from('watchlist')
+    .insert(item);
+
+  return checkError(response);
+}
+
+export async function removeItem(id) {
+  const response = await client
+    .from('watchlist')
+    .delete()
+    .match({ movie_id: id });
+
+  return checkError(response);
+}
+
 export default getUser;
