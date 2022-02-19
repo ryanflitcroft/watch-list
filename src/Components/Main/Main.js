@@ -13,8 +13,9 @@ import Auth from './Auth';
 import SearchPage from './SearchPage';
 
 export default function Main({ user,
-  setUser }) {
-  const [watchlist, setWatchlist] = useState([]);
+  setUser,
+  watchlist,
+  setWatchlist }) {
 
   useEffect(() => {
     async function getData() {
@@ -27,8 +28,6 @@ export default function Main({ user,
   return (
     <>
       <main>
-        <button onClick={signOutUser}
-          type='button'>Sign Out</button>
         <Router>
           <NavLink to='/watchlist'>
             Your watchlist

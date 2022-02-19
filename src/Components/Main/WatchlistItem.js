@@ -1,6 +1,7 @@
 import React from 'react';
 import { getWatchlist,
-  removeItem } from '../../services/fetch-utils';
+  removeItem, 
+  updateWatched } from '../../services/fetch-utils';
 
 export default function WatchlistItem({ item,
   setWatchlist }) {
@@ -11,18 +12,25 @@ export default function WatchlistItem({ item,
     setWatchlist(data);
   }
 
+  async function handleWatched() {
+    await updateWatched(item.movie_id);
+    const data = await getWatchlist();
+    setWatchlist(data);
+  }
+
   return (
     <>
-      <figure className={item.watched && 'watched'}>
+      <figure>
         <figcaption>
           {item.title}
         </figcaption>
         <img src={`https://image.tmdb.org/t/p/w300/${item.poster_path}`} 
-          alt={item.title} />
+          alt={item.title}
+          className={item.watched && 'watched'} />
         <div>
           <span onClick={handleRemove}
             title='Remove from watchlist'>➖</span>
-          <span onClick={() => {}}
+          <span onClick={handleWatched}
             title='Mark as watched'>✔️</span>
         </div>
         <p>

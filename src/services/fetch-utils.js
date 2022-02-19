@@ -47,10 +47,20 @@ export async function removeItem(id) {
   return checkError(response);
 }
 
+export async function updateWatched(id) {
+  const response = await client
+    .from('watchlist')
+    .update({ watched: true })
+    .match({ movie_id: id });
+
+  return checkError(response);
+}
+
 export async function getWatchlist() {
   const response = await client
     .from('watchlist')
-    .select();
+    .select()
+    .order('title', { ascending: true });
 
   return checkError(response);
 }
