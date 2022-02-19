@@ -41,13 +41,15 @@ export default function Main({ user,
               {
                 !user
                   ? <Auth setUser={setUser} />
-                  : <Watchlist watchlist={watchlist} />
+                  : <Watchlist watchlist={watchlist}
+                    setWatchlist={setWatchlist} />
               }
             </Route>
             <Route exact path='/watchlist'>
               {
                 user
-                  ? <Watchlist watchlist={watchlist} />
+                  ? <Watchlist watchlist={watchlist}
+                    setWatchlist={setWatchlist} />
                   : <Redirect to='/' />
               }
             </Route>

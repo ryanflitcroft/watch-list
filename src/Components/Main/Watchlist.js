@@ -2,7 +2,8 @@ import React,
 { useEffect } from 'react';
 import WatchlistItem from './WatchlistItem';
 
-export default function Watchlist({ watchlist }) {
+export default function Watchlist({ watchlist,
+  setWatchlist }) {
 
   return (
     <>
@@ -11,7 +12,8 @@ export default function Watchlist({ watchlist }) {
         {
           watchlist.map((item, i) =>
             <WatchlistItem key={item + i}
-              item={item} />
+              item={item}
+              setWatchlist={setWatchlist} />
           )}
       </section>
     </>
