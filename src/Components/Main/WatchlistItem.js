@@ -13,7 +13,7 @@ export default function WatchlistItem({ item,
   }
 
   async function handleWatched() {
-    await updateWatched(item.movie_id);
+    await updateWatched(item.movie_id, !item.watched);
     const data = await getWatchlist();
     setWatchlist(data);
   }
@@ -31,7 +31,8 @@ export default function WatchlistItem({ item,
           <span onClick={handleRemove}
             title='Remove from watchlist'>➖</span>
           <span onClick={handleWatched}
-            title='Mark as watched'>✔️</span>
+            className={item.watched && 'watched'}
+            title={!item.watched ? 'Mark as watched' : 'Mark as unwatched'}>✔️</span>
         </div>
         <p>
           {item.overview}

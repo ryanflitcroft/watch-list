@@ -111,7 +111,7 @@ figure {
   border-radius: 1em;
 }
 
-figure img.watched {
+.watched {
   opacity: 50%;
 }
 

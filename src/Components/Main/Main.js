@@ -5,7 +5,8 @@ import { BrowserRouter as Router,
   Switch,
   Route,
   Redirect,
-  NavLink } from 'react-router-dom';
+  NavLink,
+  useLocation } from 'react-router-dom';
 import { signOutUser,
   getWatchlist } from '../../services/fetch-utils';
 import Watchlist from './Watchlist';
@@ -23,7 +24,7 @@ export default function Main({ user,
       setWatchlist(data);
     }
     getData();
-  }, []);
+  }, [setWatchlist]);
 
   return (
     <>

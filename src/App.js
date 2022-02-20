@@ -9,6 +9,7 @@ import getUser, { getWatchlist } from './services/fetch-utils';
 function App() {
   const [user, setUser] = useState(localStorage.getItem('supabase.auth.token'));
   const [watchlist, setWatchlist] = useState([]);
+  const [params, setParams] = useState('');
 
   useEffect(() => {
     async function getData() {
@@ -27,7 +28,9 @@ function App() {
       <Main user={user}
         setUser={setUser}
         watchlist={watchlist}
-        setWatchlist={setWatchlist} />
+        setWatchlist={setWatchlist}
+        params={params}
+        setParams={setParams} />
       <Footer />
     </>
   );

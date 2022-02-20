@@ -1,6 +1,5 @@
 import React, {
-  useState,
-  useEffect
+  useState 
 } from 'react';
 import SearchItem from './SearchItem';
 
@@ -9,10 +8,6 @@ export default function SearchPage({ watchlist,
   const [searchResults, setSearchResults] = useState([]);
   const [search, setSearch] = useState('');
   const [loading, setLoading] = useState(false);
-
-  // useEffect(() => {
-
-  // }, []);
 
   async function handleSubmit(e) {
     e.preventDefault();

@@ -47,10 +47,10 @@ export async function removeItem(id) {
   return checkError(response);
 }
 
-export async function updateWatched(id) {
+export async function updateWatched(id, bool) {
   const response = await client
     .from('watchlist')
-    .update({ watched: true })
+    .update({ watched: bool })
     .match({ movie_id: id });
 
   return checkError(response);
