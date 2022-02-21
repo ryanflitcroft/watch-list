@@ -1,13 +1,18 @@
 import React, {
   useState 
 } from 'react';
+import { useLocation } from 'react-router-dom';
 import SearchItem from './SearchItem';
 
 export default function SearchPage({ watchlist,
-  setWatchlist }) {
+  setWatchlist,
+  setLocation }) {
   const [searchResults, setSearchResults] = useState([]);
   const [search, setSearch] = useState('');
   const [loading, setLoading] = useState(false);
+
+  const location = useLocation();
+  setLocation(location.pathname);
 
   async function handleSubmit(e) {
     e.preventDefault();
