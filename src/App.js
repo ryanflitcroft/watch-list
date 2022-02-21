@@ -23,7 +23,6 @@ function App() {
       setWatchlist(data);
     }
     getData();
-    console.log('location', location);
   }, [user, location]);
 
   return (
