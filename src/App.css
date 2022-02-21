@@ -54,7 +54,7 @@ form {
   flex-direction: column;
   box-shadow: 0.25em 0.25em 0.5em #3d3d3d,
               -0.05em -0.05em 0.15em #d3d3d3;
-  margin: 3em;
+  margin: 3em 0;
 }
 
 form#auth-form {
