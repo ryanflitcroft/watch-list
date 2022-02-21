@@ -1,7 +1,9 @@
 import React from 'react';
-import { getWatchlist,
+import {
+  getWatchlist,
   removeItem, 
-  updateWatched } from '../../services/fetch-utils';
+  updateWatched
+} from '../../services/fetch-utils';
 
 export default function WatchlistItem({ item,
   setWatchlist }) {

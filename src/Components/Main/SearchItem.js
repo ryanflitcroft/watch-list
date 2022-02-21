@@ -1,17 +1,19 @@
 import React from 'react';
-import { addItem, getWatchlist, removeItem } from '../../services/fetch-utils';
+import { 
+  addItem, 
+  getWatchlist, 
+  removeItem 
+} from '../../services/fetch-utils';
 
 export default function SearchItem({ item,
   watchlist,
   setWatchlist }) {
-  console.log('item', item);
-  console.log('watchlist', watchlist);
 
   const watchlistItem = onWatchlist(item.id);
 
   function onWatchlist(id) {
     const match = watchlist.find(movie => (movie.movie_id === id));
-    console.log('----match', match);
+
     return Boolean(match);
   }
 

@@ -1,14 +1,11 @@
 import React,
-{ useState,
-  useEffect } from 'react';
+{ useEffect } from 'react';
 import { BrowserRouter as Router,
   Switch,
   Route,
   Redirect,
-  NavLink,
-  useLocation } from 'react-router-dom';
-import { signOutUser,
-  getWatchlist } from '../../services/fetch-utils';
+  NavLink } from 'react-router-dom';
+import { getWatchlist } from '../../services/fetch-utils';
 import Watchlist from './Watchlist';
 import Auth from './Auth';
 import SearchPage from './SearchPage';
@@ -36,6 +33,7 @@ export default function Main({ user,
           <NavLink to='/search'>
             Search Movies
           </NavLink>
+          {/* TODO: useLocation to conditionally render NavLink, useState for variable location */}
           <Switch>
             <Route exact path='/'>
               {

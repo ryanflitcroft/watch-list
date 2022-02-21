@@ -1,6 +1,8 @@
 import './App.css';
-import { useState,
-  useEffect } from 'react';
+import { 
+  useState,
+  useEffect
+} from 'react';
 import Header from './Components/Header/Header';
 import Main from './Components/Main/Main';
 import Footer from './Components/Footer/Footer';
@@ -23,8 +25,7 @@ function App() {
 
   return (
     <>
-      <Header user={user}
-      />
+      <Header user={user} />
       <Main user={user}
         setUser={setUser}
         watchlist={watchlist}

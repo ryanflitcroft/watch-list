@@ -1,5 +1,4 @@
-import React,
-{ useEffect } from 'react';
+import React from 'react';
 import WatchlistItem from './WatchlistItem';
 
 export default function Watchlist({ watchlist,
