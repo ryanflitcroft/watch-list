@@ -1,8 +1,13 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import WatchlistItem from './WatchlistItem';
 
 export default function Watchlist({ watchlist,
-  setWatchlist }) {
+  setWatchlist,
+  setLocation }) {
+
+  const location = useLocation();
+  setLocation(location.pathname);
 
   return (
     <>

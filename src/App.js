@@ -13,6 +13,8 @@ function App() {
   const [watchlist, setWatchlist] = useState([]);
   const [params, setParams] = useState('');
 
+  const [location, setLocation] = useState('/');
+
   useEffect(() => {
     async function getData() {
       const user = await getUser();
@@ -21,7 +23,8 @@ function App() {
       setWatchlist(data);
     }
     getData();
-  }, [user]);
+    console.log('location', location);
+  }, [user, location]);
 
   return (
     <>
@@ -31,7 +34,9 @@ function App() {
         watchlist={watchlist}
         setWatchlist={setWatchlist}
         params={params}
-        setParams={setParams} />
+        setParams={setParams}
+        location={location}
+        setLocation={setLocation} />
       <Footer />
     </>
   );

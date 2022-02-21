@@ -13,7 +13,9 @@ import SearchPage from './SearchPage';
 export default function Main({ user,
   setUser,
   watchlist,
-  setWatchlist }) {
+  setWatchlist,
+  location,
+  setLocation }) {
 
   useEffect(() => {
     async function getData() {
@@ -27,27 +29,32 @@ export default function Main({ user,
     <>
       <main>
         <Router>
-          <NavLink to='/watchlist'>
-            Your watchlist
-          </NavLink>
-          <NavLink to='/search'>
-            Search Movies
-          </NavLink>
-          {/* TODO: useLocation to conditionally render NavLink, useState for variable location */}
+          {
+            (location !== '/watchlist' && location !== '/')
+              && <NavLink to='/watchlist'>
+              Your watchlist
+              </NavLink>
+          }
+          {
+            (location !== '/search' && location !== '/')
+              && <NavLink to='/search'>
+              Search Movies
+              </NavLink>
+          }
           <Switch>
             <Route exact path='/'>
               {
                 !user
                   ? <Auth setUser={setUser} />
-                  : <Watchlist watchlist={watchlist}
-                    setWatchlist={setWatchlist} />
+                  : <Redirect to='/watchlist' />
               }
             </Route>
             <Route exact path='/watchlist'>
               {
                 user
                   ? <Watchlist watchlist={watchlist}
-                    setWatchlist={setWatchlist} />
+                    setWatchlist={setWatchlist}
+                    setLocation={setLocation} />
                   : <Redirect to='/' />
               }
             </Route>
@@ -55,7 +62,8 @@ export default function Main({ user,
               {
                 user
                   ? <SearchPage watchlist={watchlist}
-                    setWatchlist={setWatchlist} />
+                    setWatchlist={setWatchlist}
+                    setLocation={setLocation} />
                   : <Redirect to='/' />
               }
             </Route>
